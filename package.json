@@ -17,6 +17,7 @@
   "scripts": {
     "start": "react-native-scripts start",
     "eject": "react-native-scripts eject",
+    "web": "./node_modules/.bin/webpack-dev-server -d --config ./web/webpack.config.js --inline --hot --colors",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
     "test": "jest"
