@@ -1,22 +1,27 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {StyleSheet, View, WebView, Dimensions} from 'react-native';
+
 
 export default class App extends React.Component {
   render() {
+    console.log('test');
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+    <View style={{flex:1, marginTop: 30, marginBottom: 30}}>
+      <WebView
+        style={styles.container}
+        source={{uri: 'https://trade-8371c.firebaseapp.com'}}
+      >
+      </WebView>
+    </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
+    height: Dimensions.get('window').height,
+    width: Dimensions.get('window').width,
+    backgroundColor: 'red',
     alignItems: 'center',
     justifyContent: 'center',
   },
