@@ -15,8 +15,10 @@ const babelLoaderConfiguration = {
   // Add every directory that needs to be compiled by Babel during the build.
   include: [
     path.resolve(appDirectory, 'index.web.js'),
+    path.resolve(appDirectory, 'src'),
     path.resolve(appDirectory, 'App.js'),
-    path.resolve(appDirectory, 'node_modules/react-native-uncompiled')
+    path.resolve(appDirectory, 'node_modules/react-native-uncompiled'),
+    path.resolve(appDirectory, 'node_modules/react-native-web-webview/src')
   ],
   use: {
     loader: 'babel-loader',
@@ -42,6 +44,15 @@ const imageLoaderConfiguration = {
     }
   }
 };
+const rule = {
+  test: /postMock.html$/,
+  use: {
+    loader: 'file-loader',
+    options: {
+      name: '[name].[ext]',
+    },
+  },
+};
 
 module.exports = {
   // your web-specific entry file
@@ -59,7 +70,8 @@ module.exports = {
   module: {
     rules: [
       babelLoaderConfiguration,
-      imageLoaderConfiguration
+      imageLoaderConfiguration,
+      rule,
     ]
   },
 
@@ -77,6 +89,10 @@ module.exports = {
     // If you're working on a multi-platform React Native app, web-specific
     // module implementations should be written in files using the extension
     // `.web.js`.
-    extensions: [ '.web.js', '.js' ]
+    extensions: [ '.web.js', '.js' ],
+    alias: {
+      'react-native': 'react-native-web',
+      'WebView': 'react-native-web-webview',
+    },
   }
 }

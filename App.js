@@ -1,10 +1,9 @@
 import React from 'react';
-import {StyleSheet, View, WebView, Dimensions} from 'react-native';
-
+import {StyleSheet, View, Dimensions} from 'react-native';
+import WebView from 'WebView';
 
 export default class App extends React.Component {
   render() {
-    console.log('test');
     return (
     <View style={{flex:1, marginTop: 30, marginBottom: 30}}>
       <WebView
